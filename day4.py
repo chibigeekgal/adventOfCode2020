@@ -46,7 +46,8 @@ def valid_input(input_dict):
 			if len(value) != 9:
 				return False
 			try:
-				int_value = int(value)
+				for digit in value:
+					int_value = int(digit)
 			except ValueError:
 				return False	
 	return True
@@ -63,9 +64,10 @@ for line in lines:
 			if valid_input(input_dict):
 				#print input_dict
 				valid += 1	
-			else:
-				print input_dict		
-		input_dict_keys = {}
+				#print input_dict
+		else:
+			print input_dict
+		input_dict = {}
 	items = line.split(" ")
 	for item in items:
 		split = item.split(":")
