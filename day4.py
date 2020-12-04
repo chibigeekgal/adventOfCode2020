@@ -16,10 +16,14 @@ def valid_input(input_dict):
 			unit = value[-2:]  
 			try:
 				if unit == 'cm':
+					if len(value) != 5:
+						return False
 					number = int(value[:3])
 					if number < 150 or number > 193:
 						return False
 				elif unit == 'in':
+					if len(value) != 4:
+						return False
 				 	number = int(value[:2])
 					if number < 59 or number > 76:
 						return False
@@ -57,8 +61,10 @@ for line in lines:
 	if line == '\n':
 		if set(input_dict.keys()).issuperset(valid_items):
 			if valid_input(input_dict):
-				print input_dict
-				valid += 1			
+				#print input_dict
+				valid += 1	
+			else:
+				print input_dict		
 		input_dict_keys = {}
 	items = line.split(" ")
 	for item in items:
